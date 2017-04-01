@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Simudyne{% endblock %}
+{% block content %} 
+    <h1>Welcome to the Simulation Platform!</h1>
+    
+    <form role = "form" action = "{% url 'index' %}" method = "POST" >
+        <legend>Input your values:</legend>
+        {% csrf_token %} 
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        <button type = "submit" class="btn btn-success"> Run simulation <span class="glyphicon glyphicon-play"></span></button>
+</div>
+</div>
+    </form>
+   
+{% endblock %}

@@ -1,0 +1,45 @@
+{% load staticfiles %}
+
+<!DOCTYPE HTML>
+<!--Page structure/design-->
+<html>
+    <head>
+        <meta charset="utf-8">  
+        <!--Dynamic page label-->
+        <title> {% block title %} {% endblock %}</title>
+        <!--Boostrap-->
+        <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css' %}">
+        <!--Librairy for plotting results-->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script><
+    </head>
+
+    <body>
+
+        <!-- top nav bar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top"> 
+            <div class="container">
+                <div class="navbar-header">
+                    <!--Corporate-->
+                    <a href="{% url 'index' %}"><img src="{% static 'img/logoProvidence.png' %}", class="img-rounded" alt="Providence logo"></a>
+                </div>
+            </div>
+        </nav>
+
+        <!--page content-->
+        <div class="jumbotron">
+            <div class="container">
+                {% block content %}
+
+                {% endblock %}
+            </div>
+        </div>
+
+        <!--footer-->
+        <footer class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+                <p>Simon LAURENT for Simudyne at March 2017</p>
+            </div>
+        </footer>
+
+    </body> 
+</html>

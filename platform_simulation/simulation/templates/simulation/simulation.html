@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Simulation results{% endblock %}
+{% block content %} 
+    <h2>Results of the simulation, Factor {{ brand_factor }}:</h2>
+    
+    <h3 style="text-decoration: underline;">Pre simulation: </h3>
+    <p>Breed C = {{ pre_analyse.c_count }}, Breed NC = {{ pre_analyse.nc_count }}.</p>
+    
+    <h3 style="text-decoration: underline;">Post simulation: </h3>
+    <p>Breed C = {{ post_analyse.c_count }}, Breed NC = {{ post_analyse.nc_count }}</p>
+
+    <h3 style="text-decoration: underline;">Details: </h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>C gained</th>
+                <th>C lost</th> 
+                <th>C regained</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ post_analyse.c_gained }}</td> 
+                <td>{{ post_analyse.c_lost }}</td>
+                <td>{{ post_analyse.c_regained }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--This graph is made with plotly.js using CDN.-->
+    <div id="myDiv" style="width: 680px; height: 600px;" class="container"></div>
+    <script>
+        var before = {
+            x: ['Breed C', 'Breed NC'], 
+            y: [{{ pre_analyse.c_count }},{{ pre_analyse.nc_count }}], 
+            name: 'Pre', 
+            type: 'bar'
+        };
+
+        var after = {
+            x: ['Breed C', 'Breed NC'], 
+            y: [{{ post_analyse.c_count }},{{ post_analyse.nc_count }}], 
+            name: 'Post', 
+            type: 'bar'
+        };
+
+        var data = [before, after];
+
+        var layout = {barmode: 'group'};
+
+        Plotly.newPlot('myDiv', data, layout);
+    </script>
+    
+
+
+{% endblock %}
