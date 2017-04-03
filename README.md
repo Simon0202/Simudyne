@@ -111,9 +111,23 @@ Running the project
 ###################
 In this part, I'll describe all the needed installation and how to run and access the project
 
+Download a zip file on github:
+
 $ pip install Django
-$ cd platform_simulation/
-$ python manage.py runserver --> platform access: http://localhost:8000/
+//Git hub —> Download ZIP
+$ unzip Simudyne-master.zip
+$ cd Simudyne-master
+$ cd platform_simulation
+$ python manage.py runserver
+//Browser adress: http://127.0.0.1:8000/
+
+Clone a zip repo on github
+$ git clone git@github.com:Simon0202/Simudyne.git
+$ cd Simudyne
+$ cd platform_simulation
+$ python manage.py runserver
+//Browser adress: http://127.0.0.1:8000/
+
 
 
 
